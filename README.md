@@ -9,7 +9,7 @@
 
 PharmWeb3 is a product venture exploring how pharmacy practice, artificial intelligence, software engineering and carefully scoped Web3 infrastructure can work together to reduce barriers to healthcare.
 
-The public product currently describes three connected pillars: **education & engagement, AI-assisted triage with pharmacist handoff, and financial support through medical-bill supplements and medication-voucher workflows.** The product also states that the AI layer has clinical boundaries and does not replace licensed professional care. citeturn333744search0turn333744search1
+The public product currently describes three connected pillars: **education & engagement, AI-assisted triage with pharmacist handoff, and financial support through medical-bill supplements and medication-voucher workflows.** The product also states that the AI layer has clinical boundaries and does not replace licensed professional care.
 
 ---
 
@@ -169,6 +169,14 @@ PharmWeb3/
 ├── token.json
 └── LICENSE
 ```
+
+---
+
+## Runnable engineering labs
+
+The repository now includes executable AI, trading, SaaS, telemetry, MySQL and Android/WebView labs with tests and CI.
+
+Run the Node labs with `npm test`, `npm run demo:ai`, `npm run demo:arbitrage`, `npm run demo:forex` and `npm run demo:telemetry`. The MySQL and Android paths are wired into GitHub Actions.
 
 ---
 
