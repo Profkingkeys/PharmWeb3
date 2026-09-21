@@ -12,6 +12,15 @@ test('tool registry exposes stable capabilities',()=>{
   assert.deepEqual(registry.list().map(x=>x.name),['calculator','project_search']);
 });
 
+test('calculator handles arithmetic without dynamic code execution',async()=>{
+  const registry=createToolRegistry();
+  const calculator=registry.get('calculator');
+  assert.equal((await calculator.run({expression:'(8+4)*2'})).result,24);
+  assert.equal((await calculator.run({expression:'10/2'})).result,5);
+  assert.equal((await calculator.run({expression:'10%3'})).result,1);
+  await assert.rejects(()=>calculator.run({expression:'1/0'}),/Division by zero/);
+});
+
 test('production agent persists a run',async()=>{
   const file=path.join(os.tmpdir(),'pw3-agent-'+Date.now()+'.jsonl');
   const run=await runProductionAgent('Calculate 8 * 7',{store:createRunStore(file)});
