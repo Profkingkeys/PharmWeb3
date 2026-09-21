@@ -1,0 +1,52 @@
+openapi: 3.1.0
+info:
+  title: PharmWeb3 SaaS Engineering API
+  version: 1.0.0
+  description: Tenant-scoped reference contract for the production engineering layer.
+servers:
+  - url: http://localhost:8787
+paths:
+  /health:
+    get:
+      responses:
+        '200':
+          description: Service health
+  /api/projects:
+    get:
+      security: [{bearerAuth: []}]
+      parameters: [{\$ref: '#/components/parameters/TenantId'}]
+      responses:
+        '200':
+          description: Tenant-scoped project list
+    post:
+      security: [{bearerAuth: []}]
+      parameters: [{\$ref: '#/components/parameters/TenantId'}]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {\$ref: '#/components/schemas/ProjectInput'}
+      responses:
+        '201':
+          description: Project created
+components:
+  parameters:
+    TenantId:
+      in: header
+      name: x-tenant-id
+      required: true
+      schema:
+        type: string
+        pattern: '^[a-zA-Z0-9][a-zA-Z0-9_-]{2,63}\$'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: pw3-api-key
+  schemas:
+    ProjectInput:
+      type: object
+      required: [name]
+      properties:
+        name: {type: string, minLength: 1}
+        plan: {type: string, default: starter}
