@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PharmWeb3 Engineering Dashboard</title>
+<style>
+body{font-family:Inter,system-ui,sans-serif;margin:0;background:#08111f;color:#f2f5f9}
+main{max-width:1100px;margin:auto;padding:42px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{background:#101b2c;border:1px solid #24344a;border-radius:14px;padding:22px}
+.metric{font-size:2rem;font-weight:700}
+small{color:#9fb0c5}
+a{color:#7dd3fc}
+code{background:#152238;padding:2px 6px;border-radius:6px}
+pre{white-space:pre-wrap;background:#0d1726;border:1px solid #24344a;border-radius:12px;padding:18px}
+</style>
+</head>
+<body><main>
+<h1>PharmWeb3 Engineering Dashboard</h1>
+<p>Runnable portfolio infrastructure for AI agents, paper trading, tenant-aware SaaS, telemetry and Android.</p>
+<div class="grid">
+<div class="card"><small>AI evaluation</small><div class="metric">4/4</div><p>Deterministic provider cases are designed for reproducible CI.</p></div>
+<div class="card"><small>Trading</small><div class="metric">PAPER</div><p>Adapter boundary, historical ingestion, risk checks and durable paper ledger.</p></div>
+<div class="card"><small>SaaS</small><div class="metric">KEY + TENANT</div><p>Salted API-key hashing, rotation, scopes and tenant ownership checks.</p></div>
+<div class="card"><small>Telemetry</small><div class="metric">OTLP</div><p>AI → SaaS → trading → database parent-child trace pipeline.</p></div>
+</div>
+<h2>Repository commands</h2>
+<pre>npm test
+npm run test:production
+npm run eval:ai:production
+npm run demo:production:pipeline
+npm run demo:production:trading</pre>
+<h2>Architecture</h2>
+<p><a href="../index.html">Back to engineering showcase</a> · <a href="https://github.com/Profkingkeys/PharmWeb3">GitHub source</a></p>
+</main></body>
+</html>
