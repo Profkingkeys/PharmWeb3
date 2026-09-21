@@ -1,0 +1,6 @@
+[
+  {"input":"calculate 8 * 7","expectedTool":"calculator","expectedValue":56},
+  {"input":"show me AI projects","expectedTool":"project_search","expectedCapability":"ai"},
+  {"input":"show me Android projects","expectedTool":"project_search","expectedCapability":"android"},
+  {"input":"show me trading projects","expectedTool":"project_search","expectedCapability":"trading"}
+]
