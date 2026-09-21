@@ -1,0 +1,16 @@
+flowchart TB
+  U[User / Client] --> AI[AI agent]
+  AI --> TR[Tool registry]
+  AI --> AR[(Agent runs)]
+  U --> SAAS[SaaS API]
+  SAAS --> AUTH[API key auth]
+  AUTH --> TEN[Tenant guard]
+  TEN --> DB[(MySQL)]
+  AI --> TRADE[Trading policy]
+  TRADE --> RISK[Risk engine]
+  RISK --> LEDGER[(Paper ledger)]
+  AI -.-> OBS[OpenTelemetry]
+  SAAS -.-> OBS
+  TRADE -.-> OBS
+  DB -.-> OBS
+  OBS --> COL[OTLP collector / APM]
