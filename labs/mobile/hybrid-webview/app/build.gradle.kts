@@ -6,6 +6,11 @@ plugins {
 android {
     namespace="com.pharmweb3.hybrid"
     compileSdk=35
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    kotlinOptions { jvmTarget = "17" }
     defaultConfig {
         applicationId="com.pharmweb3.hybrid"
         minSdk=24

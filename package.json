@@ -21,5 +21,6 @@
     "demo:telemetry": "node observability/demo/src/index.js",
     "demo:production:pipeline": "node production/telemetry/pipeline.js",
     "demo:production:trading": "node production/trading/src/run.js"
-  }
+  },
+  "type": "module"
 }

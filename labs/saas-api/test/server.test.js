@@ -16,7 +16,18 @@ test('health endpoint',()=>withServer(async base=>{
 }));
 
 test('creates SaaS project',()=>withServer(async base=>{
-  const r=await fetch(base+'/api/projects',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({name:'New Clinic',plan:'pro'})});
+  const r=await fetch(base+'/api/projects',{method:'POST',headers:{'content-type':'application/json','x-tenant-id':'clinic-a'},body:JSON.stringify({name:'New Clinic',plan:'pro'})});
   assert.equal(r.status,201);
   assert.equal((await r.json()).name,'New Clinic');
+}));
+
+test('HTTP tenant boundary hides another clinic projects',()=>withServer(async base=>{
+  const created=await fetch(base+'/api/projects',{method:'POST',headers:{'content-type':'application/json','x-tenant-id':'clinic-a'},body:JSON.stringify({name:'Private clinic project'})});
+  assert.equal(created.status,201);
+  const own=await fetch(base+'/api/projects',{headers:{'x-tenant-id':'clinic-a'}});
+  assert.equal((await own.json()).projects.length,1);
+  const other=await fetch(base+'/api/projects',{headers:{'x-tenant-id':'clinic-b'}});
+  assert.deepEqual((await other.json()).projects,[]);
+  const missing=await fetch(base+'/api/projects');
+  assert.equal(missing.status,400);
 }));

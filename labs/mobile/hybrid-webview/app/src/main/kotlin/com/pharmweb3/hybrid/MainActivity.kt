@@ -12,7 +12,8 @@ class MainActivity : Activity() {
         webView.webViewClient = WebViewClient()
         webView.settings.javaScriptEnabled = true
         webView.addJavascriptInterface(TelemetryBridge(this), "Telemetry")
-        webView.loadData(
+        webView.loadDataWithBaseURL(
+            null,
             "<html><body><h1>PharmWeb3 Hybrid Lab</h1><script>Telemetry.event('webview.loaded')</script></body></html>",
             "text/html", "UTF-8", null
         )
