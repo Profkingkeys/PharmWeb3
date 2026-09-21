@@ -1,10 +1,14 @@
-function hexId(bytes){return [...Array(bytes)].map(()=>Math.floor(Math.random()*256).toString(16).padStart(2,'0')).join('');}
+import { randomBytes } from 'node:crypto';
+
+function hexId(bytes){ return randomBytes(bytes).toString('hex'); }
+
 function attribute(key,value){
-  if(typeof value==='boolean')return {key,value:{boolValue:value}};
-  if(Number.isInteger(value))return {key,value:{intValue:String(value)}};
-  if(typeof value==='number')return {key,value:{doubleValue:value}};
+  if(typeof value==='boolean') return {key,value:{boolValue:value}};
+  if(Number.isInteger(value)) return {key,value:{intValue:String(value)}};
+  if(typeof value==='number') return {key,value:{doubleValue:value}};
   return {key,value:{stringValue:String(value)}};
 }
+
 export function createOtlpJsonSpan(name,{traceId=hexId(16),spanId=hexId(8),startTimeUnixNano,endTimeUnixNano,attributes={},statusCode=0,parentSpanId=''}={}){
   return {
     traceId,spanId,...(parentSpanId?{parentSpanId}:{}),name,kind:1,
@@ -14,6 +18,7 @@ export function createOtlpJsonSpan(name,{traceId=hexId(16),spanId=hexId(8),start
     status:{code:statusCode}
   };
 }
+
 export async function exportSpans(spans,{endpoint=headersEndpoint(),headers={}}={}){
   const response=await fetch(endpoint,{
     method:'POST',
@@ -28,10 +33,12 @@ export async function exportSpans(spans,{endpoint=headersEndpoint(),headers={}}=
       }]
     })
   });
-  if(!response.ok)throw new Error('OTLP export failed: '+response.status);
+  if(!response.ok) throw new Error('OTLP export failed: '+response.status);
   return {endpoint,status:response.status,exported:spans.length};
 }
+
 function headersEndpoint(){
-  if(process.env.OTEL_EXPORTER_OTLP_TRACES_ENDPOINT)return process.env.OTEL_EXPORTER_OTLP_TRACES_ENDPOINT;
-  return (process.env.OTEL_EXPORTER_OTLP_ENDPOINT??'http://localhost:4318')+'/v1/traces';
+  if(process.env.OTEL_EXPORTER_OTLP_TRACES_ENDPOINT) return process.env.OTEL_EXPORTER_OTLP_TRACES_ENDPOINT;
+  const base=process.env.OTEL_EXPORTER_OTLP_ENDPOINT??'http://localhost:4318';
+  return base.endsWith('/') ? base+'v1/traces' : base+'/v1/traces';
 }
