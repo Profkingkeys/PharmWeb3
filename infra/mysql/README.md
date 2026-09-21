@@ -1,13 +1,11 @@
 # MySQL Infrastructure
 
-Local relational-data infrastructure for portfolio applications.
+Reproducible MySQL 8.4 development infrastructure for the SaaS and AI workflow labs.
 
-The setup uses Docker Compose so the database can be reproduced without installing MySQL directly on the host.
+Docker is the supported local path:
 
-## Principles
+```bash
+docker compose up -d
+```
 
-- schema-first development
-- environment variables for credentials
-- migrations before production use
-- least-privilege application users
-- indexes based on measured query patterns
+The current coding terminal does not have Docker installed, so container startup is covered by CI rather than claimed as a local runtime test.

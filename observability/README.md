@@ -2,14 +2,4 @@
 
 The portfolio treats observability as a first-class engineering concern.
 
-The telemetry layer is designed around traces, structured events, execution duration, error state, and selected attributes. AI-agent runs and automation workflows can therefore be inspected instead of behaving like opaque scripts.
-
-## Useful signals
-
-- agent run duration
-- tool invocation count
-- tool errors
-- decision outcome
-- paper-order lifecycle
-- API latency
-- application errors
+The demo exposes trace IDs, span IDs, operation names, timing and structured attributes. The same contract can be mapped onto OpenTelemetry exporters when the runtime dependency is introduced.
