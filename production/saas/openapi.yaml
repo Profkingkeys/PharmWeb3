@@ -13,19 +13,24 @@ paths:
           description: Service health
   /api/projects:
     get:
-      security: [{bearerAuth: []}]
-      parameters: [{\$ref: '#/components/parameters/TenantId'}]
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/TenantId'
       responses:
         '200':
           description: Tenant-scoped project list
     post:
-      security: [{bearerAuth: []}]
-      parameters: [{\$ref: '#/components/parameters/TenantId'}]
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/TenantId'
       requestBody:
         required: true
         content:
           application/json:
-            schema: {\$ref: '#/components/schemas/ProjectInput'}
+            schema:
+              $ref: '#/components/schemas/ProjectInput'
       responses:
         '201':
           description: Project created
@@ -37,7 +42,7 @@ components:
       required: true
       schema:
         type: string
-        pattern: '^[a-zA-Z0-9][a-zA-Z0-9_-]{2,63}\$'
+        pattern: '^[a-zA-Z0-9][a-zA-Z0-9_-]{2,63}$'
   securitySchemes:
     bearerAuth:
       type: http
@@ -48,5 +53,9 @@ components:
       type: object
       required: [name]
       properties:
-        name: {type: string, minLength: 1}
-        plan: {type: string, default: starter}
+        name:
+          type: string
+          minLength: 1
+        plan:
+          type: string
+          default: starter
