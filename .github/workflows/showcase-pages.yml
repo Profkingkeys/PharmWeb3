@@ -1,12 +1,6 @@
 name: publish-engineering-showcase
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'demos/showcase/**'
-      - 'docs/diagrams/**'
-      - '.github/workflows/showcase-pages.yml'
   workflow_dispatch:
 
 permissions:
