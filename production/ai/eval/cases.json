@@ -1,0 +1,6 @@
+[
+  {"input":"Calculate 21 * 4","expectedTool":"calculator","expectedValue":84},
+  {"input":"Show me AI projects","expectedTool":"project_search","expectedCapability":"ai"},
+  {"input":"Find Android work","expectedTool":"project_search","expectedCapability":"android"},
+  {"input":"Show trading projects","expectedTool":"project_search","expectedCapability":"trading"}
+]
