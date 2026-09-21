@@ -14,9 +14,12 @@ jobs:
         with:
           node-version: 22
       - run: npm test
+      - run: npm run eval:ai
       - run: npm run demo:ai -- "show me AI projects"
       - run: npm run demo:arbitrage
+      - run: npm run demo:arbitrage:backtest
       - run: npm run demo:forex
+      - run: npm run demo:forex:backtest
       - run: npm run demo:telemetry
 
   mysql:
