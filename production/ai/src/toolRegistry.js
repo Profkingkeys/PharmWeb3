@@ -5,8 +5,8 @@ function arithmetic(expression) {
   if(!source||source.length>200||!/^[\d()+\-*/%.]+$/.test(source)) throw new Error('Unsafe arithmetic expression');
   let index=0;
 
-  function peek(){ return source[index] ?? ''; }
-  function consume(){ return source[index++]; }
+  function peek(){return source[index]??'';}
+  function consume(){return source[index++];}
 
   function parseExpression(){
     let value=parseTerm();
@@ -20,10 +20,10 @@ function arithmetic(expression) {
 
   function parseTerm(){
     let value=parseFactor();
-    while(peek()==='*'||peek==='/'||peek()==='%'){
+    while(peek()==='*'||peek()==='/'||peek()==='%'){
       const op=consume();
       const rhs=parseFactor();
-      if((op==='/'||op==='%')&&rhs===0) throw new Error('Division by zero');
+      if((op==='/'||op==='%')&&rhs===0)throw new Error('Division by zero');
       value=op==='*'?value*rhs:op==='/'?value/rhs:value%rhs;
     }
     return value;
@@ -37,20 +37,20 @@ function arithmetic(expression) {
     if(peek()==='('){
       consume();
       const value=parseExpression();
-      if(consume()!==')') throw new Error('Unbalanced parentheses');
+      if(consume()!==')')throw new Error('Unbalanced parentheses');
       return value;
     }
     const start=index;
-    while(/[\d.]/.test(peek())) consume();
+    while(/[\d.]/.test(peek()))consume();
     const token=source.slice(start,index);
-    if(!token||token==='.') throw new Error('Invalid number');
+    if(!token||token==='.')throw new Error('Invalid number');
     const value=Number(token);
-    if(!Number.isFinite(value)) throw new Error('Invalid number');
+    if(!Number.isFinite(value))throw new Error('Invalid number');
     return value;
   }
 
   const result=parseExpression();
-  if(index!==source.length) throw new Error('Invalid arithmetic expression');
+  if(index!==source.length)throw new Error('Invalid arithmetic expression');
   return result;
 }
 
