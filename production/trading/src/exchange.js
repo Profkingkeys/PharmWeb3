@@ -9,8 +9,8 @@ export class FixtureExchangeAdapter extends ExchangeAdapter{
   constructor(name,snapshot){super(name);this.snapshot=snapshot;}
   async ticker(symbol){
     await this.limiter.wait();
-    const row=this.snapshot.find(item=>item.symbol===symbol);
-    if(!row) throw new Error('Unknown fixture symbol: '+symbol);
+    const row=this.snapshot.find(item=>item.symbol===symbol&&item.venue===this.name);
+    if(!row) throw new Error('Unknown fixture symbol for venue: '+this.name+' '+symbol);
     return {exchange:this.name,symbol,ask:Number(row.ask),bid:Number(row.bid),timestamp:row.timestamp};
   }
 }
