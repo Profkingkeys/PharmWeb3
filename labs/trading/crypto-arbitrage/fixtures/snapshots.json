@@ -1,0 +1,5 @@
+[
+  {"ticker":"BTC/USDT","venues":[{"name":"A","ask":100,"bid":99.9},{"name":"B","ask":100.1,"bid":100.7}]},
+  {"ticker":"BTC/USDT","venues":[{"name":"A","ask":100,"bid":100.0},{"name":"B","ask":100.1,"bid":100.4}]},
+  {"ticker":"BTC/USDT","venues":[{"name":"A","ask":100,"bid":99.8},{"name":"B","ask":100.2,"bid":100.6}]}
+]
