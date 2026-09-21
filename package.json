@@ -1,1 +1,25 @@
-{"name":"pharmweb3-engineering-labs","private":true,"version":"1.1.0","description":"Runnable engineering labs for the PharmWeb3 portfolio.","scripts":{"test":"node --test labs/ai-agent/test/*.test.js labs/trading/crypto-arbitrage/test/*.test.js labs/trading/forex-ai/test/*.test.js labs/saas-api/test/*.test.js observability/demo/test/*.test.js","test:ai":"node --test labs/ai-agent/test/*.test.js","eval:ai":"node labs/ai-agent/evals/run.js","test:trading":"node --test labs/trading/crypto-arbitrage/test/*.test.js labs/trading/forex-ai/test/*.test.js","test:saas":"node --test labs/saas-api/test/*.test.js","test:telemetry":"node --test observability/demo/test/*.test.js","demo:ai":"node labs/ai-agent/src/agent.js","demo:arbitrage":"node labs/trading/crypto-arbitrage/src/index.js","demo:arbitrage:backtest":"node labs/trading/crypto-arbitrage/src/runBacktest.js","demo:forex":"node labs/trading/forex-ai/src/index.js","demo:forex:backtest":"node labs/trading/forex-ai/src/runBacktest.js","demo:saas":"node labs/saas-api/src/server.js","demo:telemetry":"node observability/demo/src/index.js"}}
+{
+  "name": "pharmweb3-engineering-labs",
+  "private": true,
+  "version": "1.2.0",
+  "description": "Runnable and production-oriented engineering labs for the PharmWeb3 portfolio.",
+  "scripts": {
+    "test": "node --test labs/ai-agent/test/*.test.js labs/trading/crypto-arbitrage/test/*.test.js labs/trading/forex-ai/test/*.test.js labs/saas-api/test/*.test.js observability/demo/test/*.test.js",
+    "test:ai": "node --test labs/ai-agent/test/*.test.js",
+    "eval:ai": "node labs/ai-agent/evals/run.js",
+    "test:trading": "node --test labs/trading/crypto-arbitrage/test/*.test.js labs/trading/forex-ai/test/*.test.js",
+    "test:saas": "node --test labs/saas-api/test/*.test.js",
+    "test:telemetry": "node --test observability/demo/test/*.test.js",
+    "test:production": "node --test production/**/test/*.test.js",
+    "eval:ai:production": "node production/ai/eval/run.js",
+    "demo:ai": "node labs/ai-agent/src/agent.js",
+    "demo:arbitrage": "node labs/trading/crypto-arbitrage/src/index.js",
+    "demo:arbitrage:backtest": "node labs/trading/crypto-arbitrage/src/runBacktest.js",
+    "demo:forex": "node labs/trading/forex-ai/src/index.js",
+    "demo:forex:backtest": "node labs/trading/forex-ai/src/runBacktest.js",
+    "demo:saas": "node labs/saas-api/src/server.js",
+    "demo:telemetry": "node observability/demo/src/index.js",
+    "demo:production:pipeline": "node production/telemetry/pipeline.js",
+    "demo:production:trading": "node production/trading/src/run.js"
+  }
+}
